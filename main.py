@@ -1,14 +1,18 @@
-print('''
-______ ___  _________  ________ _   _ _____                       
-|  ___/ _ \ | ___ \  \/  |_   _| \ | |  __ \                      
-| |_ / /_\ \| |_/ / .  . | | | |  \| | |  \/                      
-|  _||  _  ||    /| |\/| | | | | . ` | | __                       
-| |  | | | || |\ \| |  | |_| |_| |\  | |_\ \                      
-\_|  \_| |_/\_| \_\_|  |_/\___/\_| \_/\____/                                                                                      
-  ___    _     _____ _____ _____ _      _____  ______ _____ _____ 
- / _ \  | |   |_   _|_   _|_   _| |    |  ___| | ___ \_   _|_   _|
-/ /_\ \ | |     | |   | |   | | | |    | |__   | |_/ / | |   | |  
-|  _  | | |     | |   | |   | | | |    |  __|  | ___ \ | |   | |  
-| | | | | |_____| |_  | |   | | | |____| |___  | |_/ /_| |_  | |  
-\_| |_/ \_____/\___/  \_/   \_/ \_____/\____/  \____/ \___/  \_/                                                               
-''')
+import shutil, keyboard, random, os, time, dados
+
+largura = shutil.get_terminal_size().columns
+
+def rolar(evento):
+  print('\033[H\033[J', end='')
+
+  for n in range(1, 6):
+    print(dados.faces[random.randint(0, 5)])
+    print('\033[H\033[J', end='')
+    time.sleep(0.2)
+
+  print(dados.faces[random.randint(0, 5)].center(largura))
+
+keyboard.on_press_key('space', rolar)
+
+while True:
+  ...
